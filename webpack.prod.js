@@ -22,7 +22,8 @@ const config = {
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
-      { from: "src/config", to:"config" }
+      { from: "src/config", to:"config" },
+      { from: "src/wwwroot", to:"wwwroot" }
     ])
   ],
 };
