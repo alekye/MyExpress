@@ -7,6 +7,13 @@ const port = conf.port || 5000;
 const express = require("express");
 const app = express();
 
+// 代理服务
+if (conf.proxy) {
+  const p = conf.proxy;
+  const { createProxyMiddleware } = require('http-proxy-middleware');
+  app.use(p.url, createProxyMiddleware({ target: p.target, changeOrigin: true }));
+}
+
 // 静态文件服务
 const fileDir = conf.fileDir || "./wwwroot";
 const fullFilePath = path.join(process.mainModule.path, fileDir);
