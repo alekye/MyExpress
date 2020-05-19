@@ -8,10 +8,16 @@ const express = require("express");
 const app = express();
 
 // 代理服务
-if (conf.proxy) {
-  const p = conf.proxy;
+const proxy = conf.proxy;
+if (proxy) {
   const { createProxyMiddleware } = require('http-proxy-middleware');
-  app.use(p.url, createProxyMiddleware({ target: p.target, changeOrigin: true }));
+  if (Array.isArray(proxy)) {
+    for(let p of proxy) {
+      app.use(p.url, createProxyMiddleware({ target: p.target, changeOrigin: true }));
+    }
+  } else if (typeof proxy === 'object') {
+    app.use(proxy.url, createProxyMiddleware({ target: proxy.target, changeOrigin: true }));
+  }
 }
 
 // 静态文件服务

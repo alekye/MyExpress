@@ -1,8 +1,14 @@
 {
   "port": 5000,
   "fileDir": "./wwwroot",
-  "proxy": {
-    "url": "/api",
-    "target": "http://localhost:3000"
-  }
+  "proxy": [
+    {
+      "url": "/api",
+      "target": "http://localhost:3000"
+    },
+    {
+      "url": "/files",
+      "target": "http://localhost:3000"
+    }
+  ]
 }
