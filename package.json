@@ -20,7 +20,7 @@
     "url": "https://github.com/alekye/MyExpress/issues"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "http-proxy-middleware": "^1.0.3"
   },
   "devDependencies": {
